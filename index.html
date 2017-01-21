@@ -1,0 +1,290 @@
+<!--
+
+    Este código funciona sob a licença GPL,
+    isso quer dizer que você pode usar,
+    modificar e distribuir suas modificações sem nenhum problema de Copyright.
+
+    EEM Francisco Moreira Filho
+    Equipe: Salomão Neto, Lucas Mateus, Joab Diana, Anderson, Ana Clarisa
+    3º Ano C
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <script src="js/jq.js"></script>
+</head>
+<body>
+<div id="app">
+    <header>
+        <h1>Linha do Tempo</h1>
+        <h2>
+            <span>D</span>
+            <span>E</span>
+            <span>C</span>
+            <span>A</span>
+            <span>D</span>
+            <span>A</span>
+
+            <span>&nbsp;</span>
+            <span>D</span>
+            <span>E</span>
+
+            <span>&nbsp;</span>
+            <span>9</span>
+            <span>0</span>
+        </h2>
+    </header>
+    <div class="timeline hide" id="tl">
+        <div class="line"></div>
+        <div class="historia" id="dates">
+            <div class="date-panel" id="1990" data-target="nav-1990">
+                <span class="date">1990</span>
+                <section class="content">
+                    <section class="sec">
+                        <h1>Política</h1>
+                        <div>
+                            <img class="fl l" src="img/collor.jpg" alt="Fernando Collor de Mello é o Novo presidente do Brasil.">
+                            <p>
+                                <strong>Fernando Collor de Mello</strong> foi o presidente mais jovem da história do Brasil,
+                                eleito 15 de março de 1990 aos quarenta anos de idade,
+                                o primeiro presidente eleito por voto direto do povo,
+                                após o Regime Militar (1964/1985) e o primeiro deposto por um processo de
+                                impeachment no país.
+                                Sucedeu o presidente José Sarney, nas eleições de 1989. Antes destas eleições,
+                                a última vez que o povo brasileiro elegeu um presidente pelo voto direto,
+                                foi em 1960, com a eleição de Jânio Quadros.
+                            </p>
+                        </div>
+                        <figure>
+                            <figcaption>Fernando Collor de Mello faz o juramento à constituição.</figcaption>
+                            <video src="videos/posse-fernando-collor-1990.mp4" data-start="05:20" data-end="06:10" controls></video>
+                        </figure>
+                        <div>
+                            <h3>Eventos:</h3>
+                            <ul>
+                                <li>
+                                    <strong>3 de abril</strong>:
+                                    O Congresso Nacional do Brasil aprova as primeiras medidas do Plano Collor.
+                                </li>
+                                <li>
+                                    <strong>13 de julho</strong>:
+                                    Presidente Fernando Collor de Mello sanciona a Lei n° 8069/90, que institui o Estatuto da Criança e do Adolescente.
+                                </li>
+                                <li>
+                                    <strong>25 de julho</strong>:
+                                    Presidente Fernando Collor de Mello sanciona a Lei dos Crimes Hediondos, que aumenta as penas de reculsão para sequestros, tráficos, estupros e os outros crimes.
+                                </li>
+                                <li>
+                                    <strong>11 de setembro</strong>:
+                                    Presidente Fernando Collor de Mello sanciona o Código de Defesa do Consumidor com vetos parciais.
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section class="sec">
+                        <h1>Cultura</h1>
+                        <div>
+                            <img class="fl l" src="img/ra-tim-bum.png" alt="Ra Tim Bum">
+                            <p>
+                                Os anos 90 pode ser chamado de o ano da televisão.
+                                Nesta época a TV era um dos principais meios de comunicação
+                                e estava se expandindo muito Pode-se dizer que a televisão era a internet dos dias atuais.
+                                Mas o que tinha de interessante na televisão nos anos 90?
+                                <br>
+                                Com seus programas educativos e extremamente chamativos, a emissora de televisão <strong>TV Cultura</strong>,
+                                conquistou o seu espaço e ainda hoje são exibidos programas que nunca deixaram de ser sucessos.
+                                <br>
+                                Um bom exemplo é o programa Rà Tim Bum que fez muito sucesso no ano de 1990. assista a um trecho:
+                            </p>
+                        </div>
+
+                        <figure>
+                            <figcaption>Abertura do Rá tim Bum</figcaption>
+                            <video src="videos/ra-tim-bum-1990.mp4" controls data-start="0:47"></video>
+                        </figure>
+                    </section>
+
+                    <section class="sec">
+                        <h1>Música</h1>
+
+                        <div>
+                            <p>
+                                Na música, a década de 1990 foi uma verdadeira salada mista! <br>
+                                Alguns Exemplos são:
+                            </p>
+                        </div>
+
+                        <div class="audio-container">
+                            <figure class="audio" style="background-image: url('./img/ra-tim-bum.png')">
+                                <figcaption>Abertura do Rá tim Bum</figcaption>
+                                <audio src="videos/ra-tim-bum-1990.mp4" controls data-start="0:47"></audio>
+                            </figure>
+                            <figure class="audio" style="background-image: url('./img/ra-tim-bum.png')">
+                                <figcaption>Abertura do Rá tim Bum</figcaption>
+                                <audio src="videos/ra-tim-bum-1990.mp4" controls data-start="0:47"></audio>
+                            </figure>
+                            <figure class="audio" style="background-image: url('./img/ra-tim-bum.png')">
+                                <figcaption>Abertura do Rá tim Bum</figcaption>
+                                <audio src="videos/ra-tim-bum-1990.mp4" controls data-start="0:47"></audio>
+                            </figure>
+                            <figure class="audio" style="background-image: url('./img/ra-tim-bum.png')">
+                                <figcaption>Abertura do Rá tim Bum</figcaption>
+                                <audio src="videos/ra-tim-bum-1990.mp4" controls data-start="0:47"></audio>
+                            </figure>
+                        </div>
+                    </section>
+                </section>
+            </div>
+            <div class="date-panel" id="1991" data-target="nav-1991">
+                <span class="date">1991</span>
+                <section class="content">
+                    <section class="sec">
+                        <h1>Política</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci aliquam aliquid animi dolores dolorum eaque eius esse facere fuga illum impedit incidunt itaque, minima mollitia nam neque repellat saepe tempora temporibus totam velit voluptate.</p>
+                        <video src="#" controls></video>
+                    </section>
+                    <section class="sec">
+                        <h1>Cultura</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut facilis illo optio porro ratione repellendus sapiente tempore voluptatem voluptates. Accusantium amet aperiam aut debitis ducimus eos excepturi impedit, ipsum itaque magni maiores modi mollitia neque nihil nisi odio pariatur praesentium quasi quia repellat tempore ut veniam, vero vitae voluptate. Architecto dolores illo, in ipsa iste maxime mollitia nisi nobis, qui quidem, rerum unde voluptas!</p>
+                        <video src="#" controls></video>
+                    </section>
+                </section>
+            </div>
+            <div class="date-panel" id="1992" data-target="nav-1992">
+                <span class="date">1990</span>
+                <section class="content">
+                    <section class="sec">
+                        <h1>Política</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci aliquam aliquid animi dolores dolorum eaque eius esse facere fuga illum impedit incidunt itaque, minima mollitia nam neque repellat saepe tempora temporibus totam velit voluptate.</p>
+                        <video src="#" controls></video>
+                    </section>
+                    <section class="sec">
+                        <h1>Cultura</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut facilis illo optio porro ratione repellendus sapiente tempore voluptatem voluptates. Accusantium amet aperiam aut debitis ducimus eos excepturi impedit, ipsum itaque magni maiores modi mollitia neque nihil nisi odio pariatur praesentium quasi quia repellat tempore ut veniam, vero vitae voluptate. Architecto dolores illo, in ipsa iste maxime mollitia nisi nobis, qui quidem, rerum unde voluptas!</p>
+                        <video src="#" controls></video>
+                    </section>
+                </section>
+            </div>
+            <div class="date-panel" id="1993" data-target="nav-1993">
+                <span class="date">1990</span>
+                <section class="content">
+                    <section class="sec">
+                        <h1>Política</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci aliquam aliquid animi dolores dolorum eaque eius esse facere fuga illum impedit incidunt itaque, minima mollitia nam neque repellat saepe tempora temporibus totam velit voluptate.</p>
+                        <video src="#" controls></video>
+                    </section>
+                    <section class="sec">
+                        <h1>Cultura</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut facilis illo optio porro ratione repellendus sapiente tempore voluptatem voluptates. Accusantium amet aperiam aut debitis ducimus eos excepturi impedit, ipsum itaque magni maiores modi mollitia neque nihil nisi odio pariatur praesentium quasi quia repellat tempore ut veniam, vero vitae voluptate. Architecto dolores illo, in ipsa iste maxime mollitia nisi nobis, qui quidem, rerum unde voluptas!</p>
+                        <video src="#" controls></video>
+                    </section>
+                </section>
+            </div>
+            <div class="date-panel" id="1994" data-target="nav-1994">
+                <span class="date">1990</span>
+                <section class="content">
+                    <section class="sec">
+                        <h1>Política</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci aliquam aliquid animi dolores dolorum eaque eius esse facere fuga illum impedit incidunt itaque, minima mollitia nam neque repellat saepe tempora temporibus totam velit voluptate.</p>
+                        <video src="#" controls></video>
+                    </section>
+                    <section class="sec">
+                        <h1>Cultura</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut facilis illo optio porro ratione repellendus sapiente tempore voluptatem voluptates. Accusantium amet aperiam aut debitis ducimus eos excepturi impedit, ipsum itaque magni maiores modi mollitia neque nihil nisi odio pariatur praesentium quasi quia repellat tempore ut veniam, vero vitae voluptate. Architecto dolores illo, in ipsa iste maxime mollitia nisi nobis, qui quidem, rerum unde voluptas!</p>
+                        <video src="#" controls></video>
+                    </section>
+                </section>
+            </div>
+            <div class="date-panel" id="1995" data-target="nav-1995">
+                <span class="date">1990</span>
+                <section class="content">
+                    <section class="sec">
+                        <h1>Política</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci aliquam aliquid animi dolores dolorum eaque eius esse facere fuga illum impedit incidunt itaque, minima mollitia nam neque repellat saepe tempora temporibus totam velit voluptate.</p>
+                        <video src="#" controls></video>
+                    </section>
+                    <section class="sec">
+                        <h1>Cultura</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut facilis illo optio porro ratione repellendus sapiente tempore voluptatem voluptates. Accusantium amet aperiam aut debitis ducimus eos excepturi impedit, ipsum itaque magni maiores modi mollitia neque nihil nisi odio pariatur praesentium quasi quia repellat tempore ut veniam, vero vitae voluptate. Architecto dolores illo, in ipsa iste maxime mollitia nisi nobis, qui quidem, rerum unde voluptas!</p>
+                        <video src="#" controls></video>
+                    </section>
+                </section>
+            </div>
+            <div class="date-panel" id="1996" data-target="nav-1996">
+                <span class="date">1990</span>
+                <section class="content">
+                    <section class="sec">
+                        <h1>Política</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci aliquam aliquid animi dolores dolorum eaque eius esse facere fuga illum impedit incidunt itaque, minima mollitia nam neque repellat saepe tempora temporibus totam velit voluptate.</p>
+                        <video src="#" controls></video>
+                    </section>
+                    <section class="sec">
+                        <h1>Cultura</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut facilis illo optio porro ratione repellendus sapiente tempore voluptatem voluptates. Accusantium amet aperiam aut debitis ducimus eos excepturi impedit, ipsum itaque magni maiores modi mollitia neque nihil nisi odio pariatur praesentium quasi quia repellat tempore ut veniam, vero vitae voluptate. Architecto dolores illo, in ipsa iste maxime mollitia nisi nobis, qui quidem, rerum unde voluptas!</p>
+                        <video src="#" controls></video>
+                    </section>
+                </section>
+            </div>
+            <div class="date-panel" id="1997" data-target="nav-1997">
+                <span class="date">1990</span>
+                <section class="content">
+                    <section class="sec">
+                        <h1>Política</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci aliquam aliquid animi dolores dolorum eaque eius esse facere fuga illum impedit incidunt itaque, minima mollitia nam neque repellat saepe tempora temporibus totam velit voluptate.</p>
+                        <video src="#" controls></video>
+                    </section>
+                    <section class="sec">
+                        <h1>Cultura</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut facilis illo optio porro ratione repellendus sapiente tempore voluptatem voluptates. Accusantium amet aperiam aut debitis ducimus eos excepturi impedit, ipsum itaque magni maiores modi mollitia neque nihil nisi odio pariatur praesentium quasi quia repellat tempore ut veniam, vero vitae voluptate. Architecto dolores illo, in ipsa iste maxime mollitia nisi nobis, qui quidem, rerum unde voluptas!</p>
+                        <video src="#" controls></video>
+                    </section>
+                </section>
+            </div>
+            <div class="date-panel" id="1998" data-target="nav-1998">
+                <span class="date">1990</span>
+                <section class="content">
+                    <section class="sec">
+                        <h1>Política</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci aliquam aliquid animi dolores dolorum eaque eius esse facere fuga illum impedit incidunt itaque, minima mollitia nam neque repellat saepe tempora temporibus totam velit voluptate.</p>
+                        <video src="#" controls></video>
+                    </section>
+                    <section class="sec">
+                        <h1>Cultura</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut facilis illo optio porro ratione repellendus sapiente tempore voluptatem voluptates. Accusantium amet aperiam aut debitis ducimus eos excepturi impedit, ipsum itaque magni maiores modi mollitia neque nihil nisi odio pariatur praesentium quasi quia repellat tempore ut veniam, vero vitae voluptate. Architecto dolores illo, in ipsa iste maxime mollitia nisi nobis, qui quidem, rerum unde voluptas!</p>
+                        <video src="#" controls></video>
+                    </section>
+                </section>
+            </div>
+            <div class="date-panel" id="1999" data-target="nav-1999">
+                <span class="date">1990</span>
+                <section class="content">
+                    <section class="sec">
+                        <h1>Política</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci aliquam aliquid animi dolores dolorum eaque eius esse facere fuga illum impedit incidunt itaque, minima mollitia nam neque repellat saepe tempora temporibus totam velit voluptate.</p>
+                        <video src="#" controls></video>
+                    </section>
+                    <section class="sec">
+                        <h1>Cultura</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aut facilis illo optio porro ratione repellendus sapiente tempore voluptatem voluptates. Accusantium amet aperiam aut debitis ducimus eos excepturi impedit, ipsum itaque magni maiores modi mollitia neque nihil nisi odio pariatur praesentium quasi quia repellat tempore ut veniam, vero vitae voluptate. Architecto dolores illo, in ipsa iste maxime mollitia nisi nobis, qui quidem, rerum unde voluptas!</p>
+                        <video src="#" controls></video>
+                    </section>
+                </section>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Você prefere R$500,00 ou uma fotografia com o raça negra?</p>
+    </footer>
+</div>
+<div id="nav">
+    <div class="line"></div>
+    <ul></ul>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>

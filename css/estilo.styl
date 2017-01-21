@@ -1,0 +1,237 @@
+size=3000px
+cor  = #0088DD
+cor2 = #FF0080
+
+*
+  margin 0
+  padding 0
+  box-sizing 0
+
+html, body
+  width 100%
+  height 100%
+  position relative
+  background #091c26
+  font: 1.2em Arial, sans-serif
+
+#nav
+  position fixed
+  bottom 0
+  left 0
+  font-size 16px
+  height 36px
+  width 100%
+  background: rgba(#000, .81)
+
+  ul
+    list-style none
+    display flex
+    flex-direction row
+    justify-content space-around
+    justify-items center
+    align-items bottom
+    width 80%
+    margin 0 auto
+
+    li
+      flex 0 auto
+      display inline-block
+      color: rgba(#FFF, .5)
+      padding 8px
+      transition all .21s ease
+      cursor pointer
+      font-weight: bold
+
+      &:hover, &.active
+        color: #FFF
+        transform scale(1.2)
+#tl
+  width 100%
+  position: relative
+  transition all .5s
+  left 0
+
+  &.hide
+    left 45%
+
+#app
+  background #FFF
+  box-shadow 0 0 16px 16px rgba(#000, .25)
+  width 100%
+  min-width 480px
+  max-width 1024px
+  margin 0 auto
+  padding 64px 32px
+  min-height 100%
+  opacity 0
+  animation fadeIn 1s 1s ease
+  animation-fill-mode forwards
+  overflow-x hidden
+
+  header
+    text-transform uppercase
+    text-align center
+    font-size 40px
+    display table
+    margin: 0 auto
+
+    h1
+      display block
+      font-size 1.2em
+      color cor
+
+    h2
+      display flex
+      padding 8px 0
+      border-top 2px solid cor2
+      font-size .809em
+      color cor2
+      justify-content space-around
+      letter-spacing 0
+      margin 2px 0 0 0
+
+  .timeline
+    display flex
+    flex-direction row
+    margin-left 16px
+    margin-top 128px
+
+    .line
+      width 4px
+      background cor
+      flex 0 auto
+
+    .historia
+      flex 1
+      padding 32px
+
+      .date-panel
+        padding-top 16px
+        margin-top 128px
+        position relative
+        cursor pointer
+
+        .sec
+          div
+            overflow auto
+            text-align: justify
+
+          p
+            line-height 1.24
+
+            &:first-letter
+              font-size 4em
+              line-height 3em
+              float left
+              font-weight: bold
+              margin .12em .0809em 0 0
+              color cor
+          ul
+            list-style: inside
+            margin .25em 0 .25em 1em
+            li
+              margin .5em 0
+
+          h1
+            font-size 1.6em
+            margin .6em 0
+            color cor2
+
+          figure
+            background: #000
+            box-shadow 0 0 16px rgba(#000, .5)
+            position: relative
+            margin 32px 0
+
+            &:hover
+              figcaption
+                opacity .82
+                transition-delay 0s
+
+            figcaption
+              position: absolute
+              top 0
+              left 0
+              right 0
+              color #FFF
+              padding 32px 16px 16px 16px
+              font-size .809em
+              text-align center
+              text-shadow 0 0 4px rgba(#000, .5)
+              opacity 0
+              transition .21s 2.5s ease
+              background linear-gradient(rgba(#000, .82), transparent)
+
+            &.audio
+              overflow auto
+              width 320px
+              height 320px
+              display flex
+              flex-direction column
+              justify-content space-between
+              background: #000
+              background-repeat no-repeat
+              background-position center
+              background-size cover
+              margin 16px
+
+              figcaption
+                position: static
+                opacity 1
+                clear both
+                flex 0 auto
+
+              audio
+                flex 0 auto
+                width: 100%
+                align-self flex-end
+                margin-bottom 8px
+
+            video, audio, img
+              display block
+              max-width 85%
+              width 100%
+              height auto
+              margin 0 auto
+
+
+          .fl, .fr
+            max-width 320px
+
+          .fl
+            margin 0 16px 16px 0
+            float left
+          .fr
+            margin 0 0 16px 16px
+            float right
+
+        .date
+          font-size 1.61em
+          position absolute
+          bottom 100%
+          left -49px
+          color cor
+
+          &:before
+            content ""
+            display inline-block
+            width 24px
+            height 24px
+            background: #FFF;
+            border-radius 50px
+            border 4px solid cor
+            margin-right 16px
+            vertical-align baseline
+
+.audio-container
+  display block
+  overflow auto
+  margin 0 auto
+  width 80%
+
+  .audio
+    float left
+
+@keyframes fadeIn
+  to
+    opacity 1
