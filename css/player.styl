@@ -1,0 +1,103 @@
+._wideo
+  background #000
+  box-shadow 0 0 16px rgba(#000, .5)
+  position: relative
+  margin 32px auto
+  display block
+  width auto
+  overflow hidden
+
+  &, & *
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+
+  canvas
+    width 100%
+
+  .progress-bar
+    width 100%
+    border none
+    padding 4px 0
+    position: absolute
+    top -4px
+    left 0
+
+    .vue-range-bar
+      border-radius 0
+
+  &.hide-bars
+    .title, .footer
+      transition-delay 0s
+    .title
+      top -60px
+    .footer
+      bottom -40px
+
+  .title
+    position: absolute
+    top 0
+    left 0
+    right 0
+    color #FFF
+    padding 16px 16px 16px 20px
+    font-size .809em
+    text-align left
+    text-shadow 0 0 4px rgba(#000, .5)
+    transition .21s ease
+    background linear-gradient(to right, #0088DD, #FF0080)
+
+  .cover
+    color #FFF
+    position: absolute
+    top 50%
+    left 50%
+    text-align: center
+    transform translate(-50%, -50%)
+    cursor pointer
+
+  .footer
+    position absolute
+    bottom 0
+    width 100%
+    height 44px
+    background #FFF
+    padding 8px
+    transition .21s ease
+
+    .time
+      display inline-block
+      font-size .6em
+      padding-bottom .25em
+      vertical-align middle
+
+    .buttons
+      width: 100%
+      button, .volume, .volume-bar
+        display inline-block
+        vertical-align middle
+      button
+        border none
+        background none
+        width 32px
+        height 32px
+        cursor pointer
+        color #FF0080
+
+      .volume
+        width 128px
+        white-space: nowrap
+        word-break none
+        overflow hidden
+
+        .mute
+          float left
+        .volume-bar
+          width 94px
+          background rgba(#000, .18)
+          padding 0
+          height 4px
+
+          .vue-range-bar
+            background #FF0080

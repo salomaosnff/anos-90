@@ -1,0 +1,43 @@
+.vue-range
+  position: relative
+  height 12px
+  width 128px
+  background: none
+  border 0
+  cursor pointer
+  padding 4px 8px
+  box-sizing border-box
+
+  .vue-range-bar
+    position: relative
+    float left
+    width 25%
+    height 100%
+    background-image linear-gradient(to right, #0088DD, #FF0080, #ff002f)
+    background-size 100% 632px
+    background-attachment fixed
+    border-radius 10px
+    transition width .21s ease
+
+
+    &:after
+      content ""
+      display block
+      width 16px
+      height 16px
+      background: #FFF
+      border-radius 50%
+      float right
+      position: absolute
+      right 0
+      top 50%
+      transition all .25s linear
+      transform translate(50%, -50%) scale(0)
+      box-shadow 2px 2px 2px rgba(#000, .5)
+      pointer-events none
+      cursor pointer
+
+  &:hover
+    .vue-range-bar
+      &:after
+        transform translate(50%, -50%) scale(1)
