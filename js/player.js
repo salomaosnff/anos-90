@@ -1,4 +1,17 @@
 "use strict";
+function parseTime(time) {
+    return parseFloat(time && time.replace(/^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/, function (str, h, m, s) {
+            h = parseInt(h) || 0;
+            m = parseInt(m) || 0;
+            s = parseInt(s) || 0;
+
+            h = h * 60;
+            m = m * 60;
+            s = s * 1;
+
+            return h + m + s;
+        }));
+}
 
 Vue.component('wideo', {
     props:{
@@ -21,7 +34,11 @@ Vue.component('wideo', {
 
         height: {
             type: [ String, Number],
-            'default': 320
+            'default': 480
+        },
+        volume: {
+            type: [ String, Number],
+            'default': 75
         },
         width: {
             type: [ String, Number],
@@ -29,34 +46,20 @@ Vue.component('wideo', {
         }
     },
     data(){
-        function parseTime(time) {
-            return parseFloat(time.replace(/^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/, function (str, h, m, s) {
-                h = parseInt(h) || 0;
-                m = parseInt(m) || 0;
-                s = parseInt(s) || 0;
-
-                h = h * 60;
-                m = m * 60;
-                s = s * 1;
-
-                console.log(h, m, s);
-
-                return h + m + s;
-            }));
-        }
 
         let h = parseInt(this.height);
         let w = this.width < 0 ? parseInt(this.height * (16/9)) : this.width;
         let s = this.src || "";
         let v = document.createElement("video");
-        let st = parseTime(this.start);
-        let e = parseTime(this.end);
+        let st = parseTime(this.start || 0);
+        let e = parseTime(this.end || 0);
         let title = this.title;
 
         h = parseInt(w / (16/9));
 
         v.src = s;
-        v.current = 1;
+        v.preload = "metadata";
+        v.current = 0;
 
         return {
             w: w,
@@ -68,11 +71,51 @@ Vue.component('wideo', {
             i: null,
             st: st,
             e: e,
-            vol: 1,
-            titl: title || ""
+            vol: Number.parseFloat(this.volume || 75.00),
+            time: 1,
+            titl: title || "",
+            duration : (e - st)
         }
     },
     methods:{
+        fullscreen(autoplay){
+            let $self = this;
+            let timer;
+
+            function _fullscreen(elem){
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                } else if (elem.mozRequestFullScreen) {
+                    elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                }
+            }
+
+            function _exit_fs(elem){
+                if (elem.exitFullscreen) {
+                    elem.exitFullscreen();
+                } else if (elem.msExitFullscreen) {
+                    elem.msExitFullscreen();
+                } else if (elem.mozCancelFullScreen) {
+                    elem.mozCancelFullScreen();
+                } else if (elem.webkitExitFullscreen) {
+                    elem.webkitExitFullscreen();
+                }
+            }
+
+            _fullscreen(this.$el);
+
+            if(autoplay) this.play();
+        },
+        hideBars(){
+            $(this.$el).addClass('hide-bars');
+        },
+        showBars(){
+            $(this.$el).removeClass('hide-bars');
+        },
         updateCanvas(){
             let _ = this;
             let c = _.c;
@@ -85,70 +128,156 @@ Vue.component('wideo', {
         },
         play(){
             this.v.play();
+            $(this.$el).find('.cover').fadeOut(1000);
         },
         playPause(){
+
             if(this.v.paused){
                 this.play();
             } else {
                 this.pause();
             }
+
+        },
+        setVolume(vol){
+
+            if(typeof vol == "number"){
+                console.log("CURR VOL:: ", vol);
+                let mute = $(this.$el).find('.mute');
+                let icon = $('<i/>',{'class' : 'material-icons'});
+                mute.empty();
+
+                vol = Math.min(vol, 100);
+                vol = Math.max(vol,   0);
+
+                this.v.volume = vol / 100;
+
+                if(vol <= 0){
+                    icon.html('&#xE04F;');
+                } else if(vol <= 25){
+                    icon.html('&#xE04E;');
+                } else if(vol < 50){
+                    icon.html('&#xE04D;')
+                } else {
+                    icon.html('&#xE050;')
+                }
+
+                mute.append(icon);
+            }
+
+            return this.v.setVolume * 100;
+
+        },
+        updateDisplay(){
+            function parseTime(d) {
+                d = Number(d);
+                let h = Math.floor(d / 3600);
+                let m = Math.floor(d % 3600 / 60);
+                let s = Math.floor(d % 3600 % 60);
+                return ((h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s);
+            }
+
+            let $_ = $(this.$el);
+
+            $_.find('.current_time').text(parseTime(this.time));
+            $_.find('.duration').text(parseTime(this.duration));
+        },
+        updateProgressBar(){
+            this.updateDisplay();
+            this.$children[0].set({
+                pos: this.time,
+                min: 0,
+                max: this.duration
+            });
         },
         _events(){
             let _ = this;
             let v = $(_.v);
+            let btn = $(this.$el).find('.play');
+            let icon = $("<i/>",{'class':'material-icons'});
 
-            v.on('loadedmetadata', function () {
-                _.e = _.e   || this.duration;
+            v.one('loadedmetadata', function () {
+                console.log("Loaded!");
+                _.updateDisplay();
+                console.log(_.vol);
+                _.setVolume(_.vol);
             });
 
             v.on('timeupdate', function () {
-                console.log(_.st, _.e);
+                let curr_time = _.e - _.currentTime();
+
                 if(this.currentTime < _.st) this.currentTime = _.st;
                 if(this.currentTime >= _.e){
-                    this.stop();
+                    _.stop();
                 }
+
+                _.duration = _.e - _.st;
+                _.time = _.duration - curr_time;
+
+                _.updateProgressBar();
+            });
+
+            v.bind('play pause', function(){
+                btn.empty();
             });
 
             v.on('play', function () {
                 _.updateCanvas();
+
+                icon.html('&#xE034;');
+                btn.append(icon);
             });
 
             v.on('pause', function () {
+                icon.html('&#xE037;');
+                btn.append(icon);
                 window.cancelAnimationFrame(_.i);
             });
         },
+        currentTime(time){
+
+            if(time){
+                try{
+                    this.v.currentTime = time;
+                }catch(err){}
+            }
+
+            return this.v.currentTime;
+        },
         pause(){
-            this.v.pause();
+            try{
+                this.v.pause();
+            }catch(e){}
+
         },
         stop(){
             this.pause();
-            this.v.currentTime = 0;
+            this.currentTime(0);
         },
+
         mute(){
-            this.vol = this.v.volume;
-            this.v.volume = 0;
+            this.vol = this.setVolume();
+            this.setVolume(0);
         },
         unmute(){
-            this.v.volume = this.vol;
+            this.setVolume(this.vol);
+            this.vol = false;
         },
-        setThumb(){
-            let _ = this;
-            let v = $(_.v);
 
-            v.one('canplay', function () {
-                _.play();
-                _.mute();
-            });
-            v.bind('timeupdate', function () {
-                if(this.currentTime > (_.st + .1)){
-                    _.pause();
-                    _.unmute();
-                    v.unbind('timeupdate');
-                }
-            })
+        toggleMute(){
+            if(this.vol){
+                this.unmute();
+            } else {
+                this.mute();
+            }
+        },
+        setTime(a){
+            this.position = this.st + a;
+            this.currentTime(this.position);
         }
     },
     mounted(){
+        let $self = this, timer = null;
 
         this.c = this.$el.getElementsByTagName("canvas")[0];
         this.c.width = this.w;
@@ -156,19 +285,39 @@ Vue.component('wideo', {
         this.ctx = this.c.getContext("2d");
 
         this._events();
-        this.setThumb();
+
+        $(this.v).one('canplay', function(){
+            $self.e = $self.e == 0 ? this.duration : $self.e;
+            $self.duration = $self.e - $self.st;
+        });
+
+        $(this.$el).on('mousemove', function(){
+            $self.showBars();
+
+            clearTimeout(timer);
+
+            timer = setTimeout(function(){
+                $self.hideBars();
+            }, 5000);
+        });
     },
     template: `<div class="_wideo">
                 <p class="title" v-if="titl.length > 0" v-html="titl"></p>
-                <canvas><p>Essa porcaria de navegador não suporta a belezura do Canvas. Atualize seu navegador, otário.</p></canvas>
+                <div class="screen" @click="fullscreen(true)">
+                    <div class="cover">Clique para executar: <br> {{titl}}</div>
+                    <canvas @click="playPause()"><p>Deu Zebra! Esse seu dinossauro aí não suporta canvas.</p></canvas>
+                </div>
                 <div class="footer">
-                    <div class="progress-bar">
-                        <div class="bar"></div>
-                    </div>
+                    <range class="progress-bar" :pos="time - st" min="0" :max="e - st" :step="1/1000" v-on:input="setTime"></range>
                     <div class="buttons">
-                        <button class="play" @click="playPause()"></button>
-                        <span class="current_time">0:00</span>
-                        <span class="current_time">1:00</span>
+                        <button class="play" @click="playPause()"><i class="material-icons">&#xE037;</i></button>
+                        <div class="volume">
+                         <button class="mute" @click="toggleMute()"></button>
+                         <range class="volume-bar" :pos="vol || 0" min="0" :max="100" :step="1/10" v-on:input="setVolume"></range>
+                        </div>
+                        <span class="time">
+                            <span class="current_time">--:--</span> / <span class="duration">--:--</span>
+                        </span>
                     </div>
                 </div>
             </div>`

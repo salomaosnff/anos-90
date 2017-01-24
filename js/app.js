@@ -32,8 +32,6 @@
 
             if(start_time){
 
-                console.log(end_time);
-
                 $el.bind('play', function(){
                     lock = !lock;
                     
@@ -144,7 +142,6 @@
 
         $(this).on('keypress', function(event){
             var key = event.keyCode;
-            console.log(key);
             if(key == 38 || key == 39){
                 if(current < date_panels.length){
                     alert(">" + current);

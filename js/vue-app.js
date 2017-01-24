@@ -2,7 +2,7 @@
 
 let App = new Vue({
     el: "#app",
-    data: function(){
+    data(){
         return {}
     }
 });
