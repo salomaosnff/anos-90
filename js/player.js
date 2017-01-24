@@ -284,6 +284,8 @@ Vue.component('wideo', {
         this.c.height = this.h;
         this.ctx = this.c.getContext("2d");
 
+        $(this.$el).width(this.w);
+
         this._events();
 
         $(this.v).one('canplay', function(){
@@ -304,7 +306,6 @@ Vue.component('wideo', {
     template: `<div class="_wideo">
                 <p class="title" v-if="titl.length > 0" v-html="titl"></p>
                 <div class="screen" @click="fullscreen(true)">
-                    <div class="cover">Clique para executar: <br> {{titl}}</div>
                     <canvas @click="playPause()"><p>Deu Zebra! Esse seu dinossauro aí não suporta canvas.</p></canvas>
                 </div>
                 <div class="footer">

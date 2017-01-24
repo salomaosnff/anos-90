@@ -3,64 +3,6 @@
 (function($){
     var current = 0;
 
-    $.fn.player = function(){
-        function toSec(time){
-            var regexp = /^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/;
-
-            if(time){
-                return time.replace(regexp, function(match, h, m, s){
-
-                    h = parseInt(h) || 0;
-                    m = parseInt(m) || 0;
-                    s = parseInt(s) || 0;
-
-                    return ((h * 60) + (m * 60) + s) || false;
-                });
-            }
-
-            return false;
-
-        }
-
-        return this.each(function(i, el){
-
-            var $el        = $(el);
-            var start_time = toSec($el.attr('data-start'));
-            var end_time   = toSec($el.attr('data-end'));
-            var next       = $el.attr('data-next') || false;
-            var lock = false;
-
-            if(start_time){
-
-                $el.bind('play', function(){
-                    lock = !lock;
-                    
-                    if(this.currentTime < start_time){
-                        this.currentTime = start_time
-                    }
-                });
-            }
-
-            if(end_time){
-
-                $el.on('timeupdate', function(){
-
-                    if(lock){
-                        if(this.currentTime >= end_time){
-
-                            this.currentTime = end_time;
-                            this.pause();
-
-                            if(next) $(next).each(function(i, el){
-                                el.play();
-                            });
-                        }
-                    }
-                });
-            }
-        });
-    };
-
     $.fn.naTela = function(callback){
         //Loop
         return this.each(function(indice, elemento){
@@ -78,7 +20,6 @@
             }
         });
     };// Fim Plugin
-
 
     function rolarPara(el){
         var $el = $(el);
@@ -139,25 +80,6 @@
                 ;
             });
         });
-
-        $(this).on('keypress', function(event){
-            var key = event.keyCode;
-            if(key == 38 || key == 39){
-                if(current < date_panels.length){
-                    alert(">" + current);
-                    rolarPara(date_panels.get(++current));
-                }
-            } else if(key == 37 || key == 40){
-
-                if(current > 0){
-                    alert("<" + current);
-                    rolarPara(date_panels.get(--current));
-                }
-            }
-
-        });
-
-        $('video, audio').player();
     });
 })(jQuery);
 

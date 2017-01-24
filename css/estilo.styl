@@ -116,16 +116,16 @@ html, body
             overflow auto
             text-align: justify
 
-          p
-            line-height 1.24
+            & .fs
+              line-height 1.24
 
-            &:first-letter
-              font-size 4em
-              line-height 3em
-              float left
-              font-weight: bold
-              margin .12em .0809em 0 0
-              color cor
+              &:first-letter
+                font-size 3em
+                line-height 4rem
+                float left
+                font-weight: bold
+                margin .28rem .0809em 0 0
+                color cor
           ul
             list-style: inside
             margin .25em 0 .25em 1em
@@ -168,3 +168,10 @@ html, body
 @keyframes fadeIn
   to
     opacity 1
+
+.audio-container
+  clear both
+  ._wideo
+    float left
+    width 48% !important
+    margin-right 16px

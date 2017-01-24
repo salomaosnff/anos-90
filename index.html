@@ -24,12 +24,6 @@
 </head>
 <body>
 <div id="app">
-    <wideo
-            title="Foster The People - Pumped up Kicks"
-            src="http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm"
-            volume="25"
-            width="960">
-    </wideo>
     <header>
         <h1>Linha do Tempo</h1>
         <h2>
@@ -59,7 +53,7 @@
                         <h1>Política</h1>
                         <div>
                             <img class="fl l" src="img/collor.jpg" alt="Fernando Collor de Mello é o Novo presidente do Brasil.">
-                            <p>
+                            <p class="fs">
                                 <strong>Fernando Collor de Mello</strong> foi o presidente mais jovem da história do Brasil,
                                 eleito 15 de março de 1990 aos quarenta anos de idade,
                                 o primeiro presidente eleito por voto direto do povo,
@@ -70,10 +64,12 @@
                                 foi em 1960, com a eleição de Jânio Quadros.
                             </p>
                         </div>
-                        <figure>
-                            <figcaption>Fernando Collor de Mello faz o juramento à constituição.</figcaption>
-                            <video src="videos/posse-fernando-collor-1990.mp4" data-start="05:20" data-end="06:10" controls></video>
-                        </figure>
+                        <wideo
+                                title="Fernando Collor de Melo faz o juramento à constituição"
+                                src="videos/posse-fernando-collor-1990.mp4"
+                                start="5:36"
+                                end="6:10">
+                        </wideo>
                         <div>
                             <h3>Eventos:</h3>
                             <ul>
@@ -100,7 +96,7 @@
                         <h1>Cultura</h1>
                         <div>
                             <img class="fl l" src="img/ra-tim-bum.png" alt="Ra Tim Bum">
-                            <p>
+                            <p class="fs">
                                 Os anos 90 pode ser chamado de o ano da televisão.
                                 Nesta época a TV era um dos principais meios de comunicação
                                 e estava se expandindo muito Pode-se dizer que a televisão era a internet dos dias atuais.
@@ -109,43 +105,56 @@
                                 Com seus programas educativos e extremamente chamativos, a emissora de televisão <strong>TV Cultura</strong>,
                                 conquistou o seu espaço e ainda hoje são exibidos programas que nunca deixaram de ser sucessos.
                                 <br>
-                                Um bom exemplo é o programa Rà Tim Bum que fez muito sucesso no ano de 1990. assista a um trecho:
+                                Um bom exemplo é o programa Rà Tim Bum que fez muito sucesso no ano de 1990.
                             </p>
                         </div>
-
-                        <figure>
-                            <figcaption>Abertura do Rá tim Bum</figcaption>
-                            <video src="videos/ra-tim-bum-1990.mp4" controls data-start="0:47"></video>
-                        </figure>
+                        <wideo
+                                title="Rà Tim Bum"
+                                src="videos/ra-tim-bum-1990.mp4"
+                                start="0:40"
+                                end="1:10"
+                                volume="25"
+                        ></wideo>
+                        <p class="fs">
+                            Já para o público mais adulto a <strong>Rede Manchete</strong> estreou a novela pantanal,
+                            que foi um dos maiores sucessos da época.
+                        </p>
+                        <wideo
+                                title="Abertura Pantanal - Rede Manchete"
+                                src="videos/pantanal-1990.mp4"
+                                start="0:50"
+                        ></wideo>
                     </section>
 
                     <section class="sec">
                         <h1>Música</h1>
 
                         <div>
-                            <p>
-                                Na música, a década de 1990 foi uma verdadeira salada mista! <br>
-                                Alguns Exemplos são:
+                            <p class="fs">
+                                No mundo da música, a década de 1990 foi uma verdadeira salada mista! <br>
+                                Alguns grandes sucessos foram:
                             </p>
                         </div>
 
                         <div class="audio-container">
-                            <figure class="audio" style="background-image: url('./img/ra-tim-bum.png')">
-                                <figcaption>Abertura do Rá tim Bum</figcaption>
-                                <audio src="videos/ra-tim-bum-1990.mp4" controls data-start="0:47"></audio>
-                            </figure>
-                            <figure class="audio" style="background-image: url('./img/ra-tim-bum.png')">
-                                <figcaption>Abertura do Rá tim Bum</figcaption>
-                                <audio src="videos/ra-tim-bum-1990.mp4" controls data-start="0:47"></audio>
-                            </figure>
-                            <figure class="audio" style="background-image: url('./img/ra-tim-bum.png')">
-                                <figcaption>Abertura do Rá tim Bum</figcaption>
-                                <audio src="videos/ra-tim-bum-1990.mp4" controls data-start="0:47"></audio>
-                            </figure>
-                            <figure class="audio" style="background-image: url('./img/ra-tim-bum.png')">
-                                <figcaption>Abertura do Rá tim Bum</figcaption>
-                                <audio src="videos/ra-tim-bum-1990.mp4" controls data-start="0:47"></audio>
-                            </figure>
+                            <wideo
+                                    title="Beto Barbosa - Preta"
+                                    src="musicas/beto-barbosa-preta.mp4"
+                                    start="0:23"
+                                    end="1:00"
+                            ></wideo>
+                            <wideo
+                                    title="Engenheiros do Hawaii - O papa e pop"
+                                    src="musicas/engenheiros-do-hawaii-o-papa-e-pop.mp4"
+                                    start="1:05"
+                                    end="1:35"
+                            ></wideo>
+                            <wideo
+                                    title="Guns N'Roses - Child On Mine"
+                                    src="musicas/guns-n-roses-child-on-mine.mp4"
+                                    start="0:27"
+                                    end="1:16"
+                            ></wideo>
                         </div>
                     </section>
                 </section>
@@ -298,6 +307,6 @@
 <script src="js/range.js"></script>
 <script src="js/player.js"></script>
 <script src="js/vue-app.js"></script>
-<!--<script src="js/app.js"></script>-->
+<script src="js/app.js"></script>
 </body>
 </html>
